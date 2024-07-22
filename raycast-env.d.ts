@@ -8,8 +8,10 @@
 /* eslint-disable @typescript-eslint/ban-types */
 
 type ExtensionPreferences = {
-  /** OAuth Client ID for IAP - OAuth Client ID for IAP */
-  "cloudIapOAuthClientId": string
+  /** Google OAuth Client ID for IAP - Google Oauth Client ID for Cloud IAP (Web Application) */
+  "iapOAuthClientId": string,
+  /** Google OAuth Client ID for Raycast - Google OAuth Client ID for Raycast App (iOS) */
+  "raycastOAuthClientId": string
 }
 
 /** Preferences accessible in all the extension's commands */

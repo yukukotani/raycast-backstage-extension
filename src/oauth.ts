@@ -11,31 +11,37 @@ export const client = new OAuth.PKCEClient({
 
 // Authorization
 
-export async function authorize(scopes: string[], clientId: string): Promise<void> {
+export async function authorize(scopes: string[], raycastClientId: string, iapClientId: string): Promise<void> {
   const tokenSet = await client.getTokens();
   if (tokenSet?.accessToken) {
     if (tokenSet.refreshToken && tokenSet.isExpired()) {
-      await client.setTokens(await refreshTokens(tokenSet.refreshToken));
+      await client.setTokens(await refreshTokens(tokenSet.refreshToken, raycastClientId));
     }
     return;
   }
 
   const authRequest = await client.authorizationRequest({
     endpoint: "https://accounts.google.com/o/oauth2/v2/auth",
-    clientId: clientId,
+    clientId: raycastClientId,
     scope: scopes.join(" "),
   });
   const { authorizationCode } = await client.authorize(authRequest);
-  await client.setTokens(await fetchTokens(authRequest, authorizationCode));
+  await client.setTokens(await fetchTokens(authRequest, authorizationCode, raycastClientId, iapClientId));
 }
 
-async function fetchTokens(authRequest: OAuth.AuthorizationRequest, authCode: string): Promise<OAuth.TokenResponse> {
+async function fetchTokens(
+  authRequest: OAuth.AuthorizationRequest,
+  authCode: string,
+  raycastClientId: string,
+  iapClientId: string,
+): Promise<OAuth.TokenResponse> {
   const params = new URLSearchParams();
-  params.append("client_id", clientId);
+  params.append("client_id", raycastClientId);
   params.append("code", authCode);
   params.append("verifier", authRequest.codeVerifier);
   params.append("grant_type", "authorization_code");
   params.append("redirect_uri", authRequest.redirectURI);
+  params.append("audience", iapClientId);
 
   const response = await fetch("https://oauth2.googleapis.com/token", { method: "POST", body: params });
   if (!response.ok) {
@@ -46,7 +52,7 @@ async function fetchTokens(authRequest: OAuth.AuthorizationRequest, authCode: st
   return tokenResponse;
 }
 
-async function refreshTokens(refreshToken: string): Promise<OAuth.TokenResponse> {
+async function refreshTokens(refreshToken: string, clientId: string): Promise<OAuth.TokenResponse> {
   const params = new URLSearchParams();
   params.append("client_id", clientId);
   params.append("refresh_token", refreshToken);
