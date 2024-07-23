@@ -1,19 +1,19 @@
 {
   "$schema": "https://www.raycast.com/schemas/extension.json",
-  "name": "people-directory",
-  "title": "People Directory",
-  "description": "A detailed employee directory for your company",
+  "name": "backstage",
+  "title": "Backstage",
+  "description": "Shortcuts for Backstage",
   "icon": "icon.png",
-  "author": "thomas",
+  "author": "yukukotani",
   "categories": [
     "Communication"
   ],
   "license": "MIT",
   "commands": [
     {
-      "name": "search-people",
-      "title": "Search People",
-      "description": "Search employees of your company",
+      "name": "search-components",
+      "title": "Search Components",
+      "description": "Search components in your Backstage catalog",
       "mode": "view"
     }
   ],
