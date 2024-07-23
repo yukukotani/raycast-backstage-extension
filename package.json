@@ -11,8 +11,8 @@
   "license": "MIT",
   "commands": [
     {
-      "name": "search-in-catalog",
-      "title": "Search in Catalog",
+      "name": "search-components",
+      "title": "Search Components",
       "description": "Search components in your Backstage catalog",
       "mode": "view"
     }

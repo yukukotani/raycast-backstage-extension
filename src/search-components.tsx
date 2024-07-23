@@ -27,7 +27,7 @@ export default function Command() {
 
   return (
     <List isLoading={isLoading}>
-      <List.Section title="Services">
+      <List.Section title="Components">
         {data?.map((svc) => (
           <List.Item
             key={svc.name}
@@ -41,7 +41,7 @@ export default function Command() {
             ]}
             actions={
               <ActionPanel>
-                <Action.Push title="See Links" target={<SearchLinks svc={svc} />} />
+                <Action.Push title="Search Links" target={<SearchLinks svc={svc} />} />
                 <Action.OpenInBrowser title="Open in Backstage" url={svc.backstageUrl} />
               </ActionPanel>
             }
@@ -62,7 +62,7 @@ function SearchLinks({ svc }: { svc: Service }) {
             title={link.name}
             actions={
               <ActionPanel>
-                <Action.OpenInBrowser title="Open URL" url={link.url} />
+                <Action.OpenInBrowser title="Open Link" url={link.url} />
               </ActionPanel>
             }
           />

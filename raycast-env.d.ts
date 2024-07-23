@@ -20,13 +20,13 @@ type ExtensionPreferences = {
 declare type Preferences = ExtensionPreferences
 
 declare namespace Preferences {
-  /** Preferences accessible in the `search-in-catalog` command */
-  export type SearchInCatalog = ExtensionPreferences & {}
+  /** Preferences accessible in the `search-components` command */
+  export type SearchComponents = ExtensionPreferences & {}
 }
 
 declare namespace Arguments {
-  /** Arguments passed to the `search-in-catalog` command */
-  export type SearchInCatalog = {}
+  /** Arguments passed to the `search-components` command */
+  export type SearchComponents = {}
 }
 
 
