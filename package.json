@@ -3,10 +3,11 @@
   "name": "backstage",
   "title": "Backstage",
   "description": "Shortcuts for Backstage",
-  "icon": "icon.png",
+  "icon": "backstage-icon.png",
   "author": "yukukotani",
   "categories": [
-    "Communication"
+    "Documentation",
+    "Developer Tools"
   ],
   "license": "MIT",
   "commands": [
