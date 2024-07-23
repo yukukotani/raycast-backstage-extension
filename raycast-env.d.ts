@@ -8,6 +8,8 @@
 /* eslint-disable @typescript-eslint/ban-types */
 
 type ExtensionPreferences = {
+  /** Backstage URL - Backstage URL */
+  "backstageUrl": string,
   /** Google OAuth Client ID for IAP - Google Oauth Client ID for Cloud IAP (Web Application) */
   "iapOAuthClientId": string,
   /** Google OAuth Client ID for Raycast - Google OAuth Client ID for Raycast App (iOS) */

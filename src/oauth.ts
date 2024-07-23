@@ -15,7 +15,7 @@ export async function authorize(scopes: string[], raycastClientId: string, iapCl
   const tokenSet = await client.getTokens();
   if (tokenSet?.accessToken) {
     if (tokenSet.refreshToken && tokenSet.isExpired()) {
-      await client.setTokens(await refreshTokens(tokenSet.refreshToken, raycastClientId));
+      await client.setTokens(await refreshTokens(tokenSet.refreshToken, raycastClientId, iapClientId));
     }
     return;
   }
@@ -52,11 +52,16 @@ async function fetchTokens(
   return tokenResponse;
 }
 
-async function refreshTokens(refreshToken: string, clientId: string): Promise<OAuth.TokenResponse> {
+async function refreshTokens(
+  refreshToken: string,
+  raycastClientId: string,
+  iapClientId: string,
+): Promise<OAuth.TokenResponse> {
   const params = new URLSearchParams();
-  params.append("client_id", clientId);
+  params.append("client_id", raycastClientId);
   params.append("refresh_token", refreshToken);
   params.append("grant_type", "refresh_token");
+  params.append("audience", iapClientId);
 
   const response = await fetch("https://oauth2.googleapis.com/token", { method: "POST", body: params });
   if (!response.ok) {
