@@ -12,4 +12,4 @@ Second, `Google OAuth Client ID for Raycast` is a new Client ID that you need to
 
 1. Go to https://console.cloud.google.com/apis/credentials
 2. Select the project that your IAP is configured.
-3. Create a new OAuth2 Client by following [this instruction](https://developers.raycast.com/utilities/oauth/getting-google-client-id#step-5-create-an-oauth-client-id).
+3. Create a new client by following [this instruction](https://developers.raycast.com/utilities/oauth/getting-google-client-id#step-5-create-an-oauth-client-id).
