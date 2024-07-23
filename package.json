@@ -30,15 +30,13 @@
       "type": "textfield",
       "name": "iapOAuthClientId",
       "title": "Google OAuth Client ID for IAP",
-      "description": "Google Oauth Client ID for Cloud IAP (Web Application)",
-      "required": true
+      "description": "Google Oauth Client ID for Cloud IAP (Web Application)"
     },
     {
       "type": "textfield",
       "name": "raycastOAuthClientId",
       "title": "Google OAuth Client ID for Raycast",
-      "description": "Google OAuth Client ID for Raycast App (iOS)",
-      "required": true
+      "description": "Google OAuth Client ID for Raycast App (iOS)"
     }
   ],
   "dependencies": {
